@@ -7,8 +7,8 @@ const port = 3000
 
 app.get('/api/sightings', async (req, res) => {
   try {
-    const users = await db.query('SELECT * FROM sightings');
-    res.send(users);
+    const sightings = await db.query('SELECT * FROM sightings');
+    res.send(sightings.rows);
   } catch (e) {
     return res.status(400).json({ e });
   }
