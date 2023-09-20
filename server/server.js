@@ -1,4 +1,7 @@
-const express = require('express')
+
+import db from './db/db-connection.js';
+import express from 'express'
+
 const app = express()
 const port = 3000
 
