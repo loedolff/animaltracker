@@ -1,6 +1,10 @@
 
 DROP TABLE species;
+DROP TABLE individuals;
 DROP TABLE sightings;
+
+-- SPECIES ----------------------------------------
+
 
 CREATE TABLE species (
     id SERIAL PRIMARY KEY,
@@ -47,10 +51,33 @@ INSERT INTO species (
     'EN'
 );
 
-
-
-
 select * from species;
+
+-- INDIVIDUALS ----------------------------------------
+
+CREATE TABLE individuals (
+    id SERIAL PRIMARY KEY,
+    nickname TEXT,
+    species_id INTEGER REFERENCES species(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO individuals (nickname, species_id)
+VALUES ('Oreo', 1);
+
+INSERT INTO individuals (nickname, species_id)
+VALUES ('Sam', 1);
+
+INSERT INTO individuals (nickname, species_id)
+VALUES ('Stripes', 2);
+
+INSERT INTO individuals (nickname, species_id)
+VALUES ('Spot', 3);
+
+select * from individuals;
+
+
+-- SIGHTINGS ----------------------------------------
 
 CREATE TABLE sightings (
     id SERIAL PRIMARY KEY,
@@ -63,4 +90,18 @@ insert into sightings(nickname, location) values ('giant', 'forrest');
 insert into sightings(nickname, location) values ('tiny', 'by the river');
 
 select * from sightings;
+
+
+-- JOIN queries ----------------------------------------
+
+select *
+from species, individuals
+where species.id = individuals.species_id;
+
+select nickname, common_name, scientific_name
+from species, individuals
+where species.id = individuals.species_id;
+
+
+
 
