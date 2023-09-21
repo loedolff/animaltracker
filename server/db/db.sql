@@ -23,6 +23,33 @@ VALUES (
     'EN'
 );
 
+INSERT INTO species (
+    common_name,
+    scientific_name,
+    estimated_living,
+    conservation_status
+) VALUES (
+    'Golden Lion Tamarin',
+    'Leontopithecus rosalia',
+    250,
+    'EN'
+);
+
+INSERT INTO species (
+    common_name,
+    scientific_name,
+    estimated_living,
+    conservation_status
+) VALUES (
+    'African Wild Dog',
+    'Lycaon pictus',
+    1100,
+    'EN'
+);
+
+
+
+
 select * from species;
 
 CREATE TABLE sightings (
